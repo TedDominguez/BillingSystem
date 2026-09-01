@@ -206,6 +206,6 @@
         private TextBox txtContact;
         private Button btnSave;
         private Button bntClear;
-        private Button button45;
+        private Button button3;
     }
 }
