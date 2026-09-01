@@ -1,6 +1,6 @@
 ﻿namespace BillingSystem
 {
-    partial class AddCustomerForm
+    partial class CustomerListForm
     {
         /// <summary>
         /// Required designer variable.
