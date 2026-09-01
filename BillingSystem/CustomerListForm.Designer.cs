@@ -196,6 +196,7 @@
             Name = "CustomerListForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Billing System - Add Customer v1.0 (F.B.)";
+            Load += CustomerListForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -215,6 +216,6 @@
         private TextBox txtContact;
         private Button btnSave;
         private Button bntClear;
-        private Button button5;
+        private Button button4;
     }
 }
