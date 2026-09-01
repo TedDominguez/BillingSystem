@@ -1,6 +1,6 @@
 ﻿namespace BillingSystem
 {
-    partial class AddCustomerForm
+    partial class CustomerListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -186,9 +186,9 @@
             Controls.Add(dgvCustomers);
             Controls.Add(lbltitle);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "AddCustomerForm";
+            Name = "CustomerListForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System v1.0 - Customer List (T.D.)";
+            Text = "Billing System - Customer List v1.0 (F.B.)";
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
             ResumeLayout(false);
             PerformLayout();
