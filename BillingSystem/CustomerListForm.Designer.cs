@@ -193,9 +193,9 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
-            Name = "CustomerListForm";
+            Name = "AddCustomerForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System - Customer List v1.0 (F.B.)";
+            Text = "Billing System v1.0 - Customer List (T.D.)";
             ResumeLayout(false);
             PerformLayout();
         }
