@@ -8,11 +8,16 @@ using System.Windows.Forms;
 
 namespace BillingSystem
 {
-    public partial class AddCustomerForm : Form
+    public partial class CustomerListForm : Form
     {
-        public AddCustomerForm()
+        public CustomerListForm()
         {
             InitializeComponent();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
