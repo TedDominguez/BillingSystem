@@ -124,7 +124,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System – Login";
+            Text = "Billing System – Login v1.0 (K.Y.M.L.)";
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
