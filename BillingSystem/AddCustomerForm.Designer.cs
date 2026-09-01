@@ -1,6 +1,6 @@
 ﻿namespace BillingSystem
 {
-    partial class CustomerListForm
+    partial class AddCustomerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,187 +28,194 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lbltitle = new Label();
-            dgvCustomers = new DataGridView();
-            CustomerID = new DataGridViewTextBoxColumn();
-            FullName = new DataGridViewTextBoxColumn();
-            Address = new DataGridViewTextBoxColumn();
-            ContactNumber = new DataGridViewTextBoxColumn();
-            Email = new DataGridViewTextBoxColumn();
-            Balance = new DataGridViewTextBoxColumn();
-            btnAdd = new Button();
-            btnDelete = new Button();
-            btnLogout = new Button();
-            txtSearch = new TextBox();
-            btnSearch = new Button();
-            lblSearch = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
+            lblTitle = new Label();
+            lblFullName = new Label();
+            labellblAddress3 = new Label();
+            lblContact = new Label();
+            lblEmail = new Label();
+            lblBalance = new Label();
+            txtFullName = new TextBox();
+            txtAddress = new TextBox();
+            txtContact = new TextBox();
+            txtEmail = new TextBox();
+            txtBalance = new TextBox();
+            btnSave = new Button();
+            btnClear = new Button();
+            btnBack = new Button();
             SuspendLayout();
             // 
-            // lbltitle
+            // lblTitle
             // 
-            lbltitle.AutoSize = true;
-            lbltitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lbltitle.Location = new Point(158, 80);
-            lbltitle.Name = "lbltitle";
-            lbltitle.Size = new Size(170, 32);
-            lbltitle.TabIndex = 0;
-            lbltitle.Text = "Customer List";
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTitle.Location = new Point(122, 35);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(195, 28);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Add New Customer";
             // 
-            // dgvCustomers
+            // lblFullName
             // 
-            dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { CustomerID, FullName, Address, ContactNumber, Email, Balance });
-            dgvCustomers.Location = new Point(158, 117);
-            dgvCustomers.Margin = new Padding(3, 4, 3, 4);
-            dgvCustomers.Name = "dgvCustomers";
-            dgvCustomers.ReadOnly = true;
-            dgvCustomers.RowHeadersWidth = 51;
-            dgvCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCustomers.Size = new Size(799, 320);
-            dgvCustomers.TabIndex = 1;
+            lblFullName.AutoSize = true;
+            lblFullName.Location = new Point(40, 98);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(79, 20);
+            lblFullName.TabIndex = 0;
+            lblFullName.Text = "Full Name:";
             // 
-            // CustomerID
+            // labellblAddress3
             // 
-            CustomerID.HeaderText = "ID";
-            CustomerID.MinimumWidth = 6;
-            CustomerID.Name = "CustomerID";
-            CustomerID.ReadOnly = true;
+            labellblAddress3.AutoSize = true;
+            labellblAddress3.Location = new Point(40, 131);
+            labellblAddress3.Name = "labellblAddress3";
+            labellblAddress3.Size = new Size(65, 20);
+            labellblAddress3.TabIndex = 0;
+            labellblAddress3.Text = "Address:";
+            labellblAddress3.Click += labellblAddress3_Click;
             // 
-            // FullName
+            // lblContact
             // 
-            FullName.HeaderText = "Full Name";
-            FullName.MinimumWidth = 6;
-            FullName.Name = "FullName";
-            FullName.ReadOnly = true;
+            lblContact.AutoSize = true;
+            lblContact.Location = new Point(40, 164);
+            lblContact.Name = "lblContact";
+            lblContact.Size = new Size(121, 20);
+            lblContact.TabIndex = 0;
+            lblContact.Text = "Contact Number:";
             // 
-            // Address
+            // lblEmail
             // 
-            Address.HeaderText = "Address";
-            Address.MinimumWidth = 6;
-            Address.Name = "Address";
-            Address.ReadOnly = true;
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(40, 197);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(49, 20);
+            lblEmail.TabIndex = 0;
+            lblEmail.Text = "Email:";
             // 
-            // ContactNumber
+            // lblBalance
             // 
-            ContactNumber.HeaderText = "Contact No.";
-            ContactNumber.MinimumWidth = 6;
-            ContactNumber.Name = "ContactNumber";
-            ContactNumber.ReadOnly = true;
+            lblBalance.AutoSize = true;
+            lblBalance.Location = new Point(40, 230);
+            lblBalance.Name = "lblBalance";
+            lblBalance.Size = new Size(105, 20);
+            lblBalance.TabIndex = 0;
+            lblBalance.Text = "Initial Balance:";
+            lblBalance.Click += this.label6_Click;
             // 
-            // Email
+            // txtFullName
             // 
-            Email.HeaderText = "Email";
-            Email.MinimumWidth = 6;
-            Email.Name = "Email";
-            Email.ReadOnly = true;
+            txtFullName.Location = new Point(173, 95);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(219, 27);
+            txtFullName.TabIndex = 1;
+            txtFullName.Text = "  ";
             // 
-            // Balance
+            // txtAddress
             // 
-            Balance.HeaderText = "Balance";
-            Balance.MinimumWidth = 6;
-            Balance.Name = "Balance";
-            Balance.ReadOnly = true;
+            txtAddress.Location = new Point(173, 128);
+            txtAddress.Name = "txtAddress";
+            txtAddress.Size = new Size(219, 27);
+            txtAddress.TabIndex = 1;
+            txtAddress.Text = "  ";
             // 
-            // btnAdd
+            // txtContact
             // 
-            btnAdd.Location = new Point(305, 457);
-            btnAdd.Margin = new Padding(3, 4, 3, 4);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(139, 31);
-            btnAdd.TabIndex = 2;
-            btnAdd.Text = "Add Customer";
-            btnAdd.UseVisualStyleBackColor = true;
+            txtContact.Location = new Point(173, 161);
+            txtContact.Name = "txtContact";
+            txtContact.Size = new Size(219, 27);
+            txtContact.TabIndex = 1;
+            txtContact.Text = "  ";
             // 
-            // btnDelete
+            // txtEmail
             // 
-            btnDelete.Location = new Point(479, 457);
-            btnDelete.Margin = new Padding(3, 4, 3, 4);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(139, 31);
-            btnDelete.TabIndex = 3;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
+            txtEmail.Location = new Point(173, 194);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(219, 27);
+            txtEmail.TabIndex = 1;
+            txtEmail.Text = "  ";
             // 
-            // btnLogout
+            // txtBalance
             // 
-            btnLogout.Location = new Point(653, 457);
-            btnLogout.Margin = new Padding(3, 4, 3, 4);
-            btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(139, 31);
-            btnLogout.TabIndex = 4;
-            btnLogout.Text = "Logout";
-            btnLogout.UseVisualStyleBackColor = true;
+            txtBalance.Location = new Point(173, 227);
+            txtBalance.Name = "txtBalance";
+            txtBalance.Size = new Size(219, 27);
+            txtBalance.TabIndex = 1;
+            txtBalance.Text = "  0.00";
             // 
-            // txtSearch
+            // btnSave
             // 
-            txtSearch.Location = new Point(539, 79);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(322, 27);
-            txtSearch.TabIndex = 5;
+            btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnSave.Location = new Point(57, 293);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(94, 29);
+            btnSave.TabIndex = 2;
+            btnSave.Text = "Save";
+            btnSave.UseVisualStyleBackColor = true;
             // 
-            // btnSearch
+            // btnClear
             // 
-            btnSearch.Location = new Point(869, 79);
-            btnSearch.Margin = new Padding(3, 4, 3, 4);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(86, 31);
-            btnSearch.TabIndex = 4;
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
+            btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnClear.Location = new Point(157, 293);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(94, 29);
+            btnClear.TabIndex = 2;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += button1_Click;
             // 
-            // lblSearch
+            // btnBack
             // 
-            lblSearch.AutoSize = true;
-            lblSearch.Font = new Font("Segoe UI", 11F);
-            lblSearch.ImageAlign = ContentAlignment.BottomLeft;
-            lblSearch.Location = new Point(472, 81);
-            lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(73, 25);
-            lblSearch.TabIndex = 6;
-            lblSearch.Text = "Search:";
-            lblSearch.TextAlign = ContentAlignment.BottomLeft;
-            lblSearch.UseMnemonic = false;
+            btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnBack.Location = new Point(257, 293);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(94, 29);
+            btnBack.TabIndex = 2;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = true;
             // 
             // AddCustomerForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1104, 615);
-            Controls.Add(lblSearch);
-            Controls.Add(txtSearch);
-            Controls.Add(btnSearch);
-            Controls.Add(btnLogout);
-            Controls.Add(btnDelete);
-            Controls.Add(btnAdd);
-            Controls.Add(dgvCustomers);
-            Controls.Add(lbltitle);
+            ClientSize = new Size(432, 373);
+            Controls.Add(btnBack);
+            Controls.Add(btnClear);
+            Controls.Add(btnSave);
+            Controls.Add(txtBalance);
+            Controls.Add(txtEmail);
+            Controls.Add(txtContact);
+            Controls.Add(txtAddress);
+            Controls.Add(txtFullName);
+            Controls.Add(lblBalance);
+            Controls.Add(lblEmail);
+            Controls.Add(lblContact);
+            Controls.Add(labellblAddress3);
+            Controls.Add(lblFullName);
+            Controls.Add(lblTitle);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
-            Name = "CustomerListForm";
+            MaximizeBox = false;
+            Name = "AddCustomerForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System - Customer List v1.0 (F.B.)";
-            ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
+            Text = "Billing System v1.0 - Customer List (T.D.)";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lbltitle;
-        private DataGridView dgvCustomers;
-        private Button btnAdd;
-        private Button btnDelete;
-        private Button btnLogout;
-        private TextBox txtSearch;
-        private Button btnSearch;
-        private DataGridViewTextBoxColumn CustomerID;
-        private DataGridViewTextBoxColumn FullName;
-        private DataGridViewTextBoxColumn Address;
-        private DataGridViewTextBoxColumn ContactNumber;
-        private DataGridViewTextBoxColumn Email;
-        private DataGridViewTextBoxColumn Balance;
-        private Label lblSearch;
+        private Label lblTitle;
+        private Label lblFullName;
+        private Label labellblAddress3;
+        private Label lblContact;
+        private Label lblEmail;
+        private Label lblBalance;
+        private TextBox txtFullName;
+        private TextBox txtAddress;
+        private TextBox txtContact;
+        private TextBox txtEmail;
+        private TextBox txtBalance;
+        private Button btnSave;
+        private Button btnClear;
+        private Button btnBack;
     }
 }
