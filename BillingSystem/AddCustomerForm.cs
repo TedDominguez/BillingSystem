@@ -8,11 +8,26 @@ using System.Windows.Forms;
 
 namespace BillingSystem
 {
-    public partial class CustomerListForm : Form
+    public partial class AddCustomerForm : Form
     {
-        public CustomerListForm()
+        public AddCustomerForm()
         {
             InitializeComponent();
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labellblAddress3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
