@@ -13,7 +13,7 @@ namespace BillingSystem.Database
         private const string SERVER = "localhost";
         private const string DATABASE = "BillingDB";
         private const string UID = "root";
-        private const string PASSWORD = "SummSec6107.";  // Add your MySQL password here
+        private const string PASSWORD = "12345678App_Dev";  // Add your MySQL password here
 
         private static string ConnectionString =>
             $"server={SERVER};database={DATABASE};uid={UID};pwd={PASSWORD};";
