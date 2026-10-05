@@ -110,7 +110,7 @@
             // txtFullName
             // 
             txtFullName.Location = new Point(216, 119);
-            txtFullName.Margin = new Padding(4, 4, 4, 4);
+            txtFullName.Margin = new Padding(4);
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(273, 31);
             txtFullName.TabIndex = 1;
@@ -119,7 +119,7 @@
             // txtAddress
             // 
             txtAddress.Location = new Point(216, 160);
-            txtAddress.Margin = new Padding(4, 4, 4, 4);
+            txtAddress.Margin = new Padding(4);
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(273, 31);
             txtAddress.TabIndex = 1;
@@ -128,7 +128,7 @@
             // txtContact
             // 
             txtContact.Location = new Point(216, 201);
-            txtContact.Margin = new Padding(4, 4, 4, 4);
+            txtContact.Margin = new Padding(4);
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(273, 31);
             txtContact.TabIndex = 1;
@@ -137,7 +137,7 @@
             // txtEmail
             // 
             txtEmail.Location = new Point(216, 242);
-            txtEmail.Margin = new Padding(4, 4, 4, 4);
+            txtEmail.Margin = new Padding(4);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(273, 31);
             txtEmail.TabIndex = 1;
@@ -146,7 +146,7 @@
             // txtBalance
             // 
             txtBalance.Location = new Point(216, 284);
-            txtBalance.Margin = new Padding(4, 4, 4, 4);
+            txtBalance.Margin = new Padding(4);
             txtBalance.Name = "txtBalance";
             txtBalance.Size = new Size(273, 31);
             txtBalance.TabIndex = 1;
@@ -156,7 +156,7 @@
             // 
             btnSave.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnSave.Location = new Point(71, 366);
-            btnSave.Margin = new Padding(4, 4, 4, 4);
+            btnSave.Margin = new Padding(4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(118, 36);
             btnSave.TabIndex = 2;
@@ -168,7 +168,7 @@
             // 
             btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnClear.Location = new Point(196, 366);
-            btnClear.Margin = new Padding(4, 4, 4, 4);
+            btnClear.Margin = new Padding(4);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(118, 36);
             btnClear.TabIndex = 2;
@@ -180,7 +180,7 @@
             // 
             btnBack.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             btnBack.Location = new Point(321, 366);
-            btnBack.Margin = new Padding(4, 4, 4, 4);
+            btnBack.Margin = new Padding(4);
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(118, 36);
             btnBack.TabIndex = 2;
@@ -212,6 +212,7 @@
             Name = "AddCustomerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Billing System v1.0 - Customer List (T.D.)";
+            Load += AddCustomerForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
