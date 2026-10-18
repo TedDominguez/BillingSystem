@@ -74,7 +74,6 @@
             labellblAddress3.Size = new Size(81, 25);
             labellblAddress3.TabIndex = 0;
             labellblAddress3.Text = "Address:";
-            labellblAddress3.Click += labellblAddress3_Click;
             // 
             // lblContact
             // 
@@ -105,7 +104,6 @@
             lblBalance.Size = new Size(122, 25);
             lblBalance.TabIndex = 0;
             lblBalance.Text = "Initial Balance:";
-            lblBalance.Click += label6_Click;
             // 
             // txtFullName
             // 
@@ -174,7 +172,7 @@
             btnClear.TabIndex = 2;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
-            btnClear.Click += button1_Click;
+            btnClear.Click += btnClear_Click;
             // 
             // btnBack
             // 
@@ -186,6 +184,7 @@
             btnBack.TabIndex = 2;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // AddCustomerForm
             // 
