@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using BillingSystem.Utils;
+
+using MySql.Data.MySqlClient;
 using BillingSystem.Database;
 
 using System;
@@ -29,21 +31,6 @@ namespace BillingSystem
         {
             InitializeComponent();
             _editCustomerId = customerId;
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labellblAddress3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -91,6 +78,8 @@ namespace BillingSystem
 
                         if (rowsAffected > 0)
                         {
+                            AuditLogger.Log("ADD_CUSTOMER", $"New customer '{txtFullName.Text.Trim()}' added by {AppSession.CurrentUsername}.");
+
                             MessageBox.Show("Customer saved successfully.",
                                 "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -137,6 +126,8 @@ namespace BillingSystem
 
                         if (rowsAffected > 0)
                         {
+                            AuditLogger.Log("EDIT_CUSTOMER", $"Customer ID {_editCustomerId} updated by {AppSession.CurrentUsername}.");
+
                             MessageBox.Show("Customer updated successfully.",
                                 "Updated", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -276,6 +267,16 @@ namespace BillingSystem
                 MessageBox.Show($"Error loading customer data:\n{ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            ClearFields();
         }
     }
 }
