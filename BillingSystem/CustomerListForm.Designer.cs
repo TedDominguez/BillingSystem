@@ -147,6 +147,16 @@
             txtSearch.TabIndex = 6;
             txtSearch.TextChanged += textBox1_TextChanged;
             // 
+            // 
+            // btnChangePassword
+            // 
+            btnChangePassword.Location = new Point(209, 533);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(138, 29);
+            btnChangePassword.TabIndex = 13;
+            btnChangePassword.Text = "Change Password";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
             // CustomerListForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

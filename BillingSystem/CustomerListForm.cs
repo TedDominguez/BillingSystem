@@ -18,6 +18,10 @@ namespace BillingSystem
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            using var changePasswordForm = new frmChangePassword();
+            changePasswordForm.ShowDialog(this);
         }
     }
 }
