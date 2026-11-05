@@ -41,6 +41,7 @@
             btnLogout = new Button();
             btnSearch = new Button();
             txtSearch = new TextBox();
+            btnChangePassword = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).BeginInit();
             SuspendLayout();
             // 
@@ -162,6 +163,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 461);
+            Controls.Add(btnChangePassword);
             Controls.Add(txtSearch);
             Controls.Add(btnSearch);
             Controls.Add(btnLogout);
@@ -192,5 +194,6 @@
         private Button btnLogout;
         private Button btnSearch;
         private TextBox txtSearch;
+        private Button btnChangePassword;
     }
 }
