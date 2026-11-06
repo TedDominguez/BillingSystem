@@ -42,6 +42,8 @@
             btnLogout = new Button();
             btnSearch = new Button();
             txtSearch = new TextBox();
+            btnChangePassword = new Button();
+            btnViewBilling = new Button();
             btnAnalytics = new Button();
             btnExportExcel = new Button();
             btnExportPdf = new Button();
@@ -182,7 +184,24 @@
             txtSearch.TabIndex = 6;
             txtSearch.TextChanged += textBox1_TextChanged;
             // 
-            // btnAnalytics
+            // btnChangePassword
+            btnChangePassword.Location = new Point(760, 573);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(187, 43);
+            btnChangePassword.TabIndex = 14;
+            btnChangePassword.Text = "Change Password";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
+            //
+            // btnViewBilling
+            btnViewBilling.Location = new Point(760, 622);
+            btnViewBilling.Name = "btnViewBilling";
+            btnViewBilling.Size = new Size(187, 43);
+            btnViewBilling.TabIndex = 15;
+            btnViewBilling.Text = "View Billing Records";
+            btnViewBilling.UseVisualStyleBackColor = true;
+            btnViewBilling.Click += btnViewBilling_Click;
+            //            // btnAnalytics
             // 
             btnAnalytics.Location = new Point(298, 524);
             btnAnalytics.Name = "btnAnalytics";
@@ -281,6 +300,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1120, 768);
             Controls.Add(statusStrip1);
+            Controls.Add(btnViewBilling);
+            Controls.Add(btnChangePassword);
             Controls.Add(btnManagePermissions);
             Controls.Add(btnAuditLog);
             Controls.Add(button1);
@@ -321,6 +342,8 @@
         private Button btnLogout;
         private Button btnSearch;
         private TextBox txtSearch;
+        private Button btnChangePassword;
+        private Button btnViewBilling;
         private Button btnAnalytics;
         private Button btnExportExcel;
         private Button btnExportPdf;

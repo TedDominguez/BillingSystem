@@ -1,4 +1,4 @@
-﻿using BillingSystem.Database;
+using BillingSystem.Database;
 using BillingSystem.Utils;
 using ClosedXML.Excel;
 using MySql.Data.MySqlClient;
@@ -31,6 +31,7 @@ namespace BillingSystem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+        }
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
@@ -38,6 +39,35 @@ namespace BillingSystem
             changePasswordForm.ShowDialog(this);
         }
 
+        private void btnViewBilling_Click(object sender, EventArgs e)
+        {
+            if (dgvCustomers.SelectedRows.Count == 0)
+            {
+                MessageBox.Show(
+                    "Please select a customer first.",
+                    "No Customer Selected",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            object? idValue = dgvCustomers.SelectedRows[0].Cells["CustomerID"].Value;
+
+            if (idValue == null ||
+                !int.TryParse(Convert.ToString(idValue), out int customerId) ||
+                customerId <= 0)
+            {
+                MessageBox.Show(
+                    "The selected customer ID is invalid.",
+                    "Invalid Selection",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            using var historyForm = new frmBillingHistory(customerId);
+            historyForm.ShowDialog(this);
+        }
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddCustomerForm addCustomerForm = new AddCustomerForm();
@@ -75,10 +105,10 @@ namespace BillingSystem
                         // Improve column headers for readability
                         if (dgvCustomers.Columns.Count > 0)
                         {
-                            dgvCustomers.Columns["CustomerID"].HeaderText = "ID";
-                            dgvCustomers.Columns["FullName"].HeaderText = "Full Name";
-                            dgvCustomers.Columns["ContactNumber"].HeaderText = "Contact No.";
-                            dgvCustomers.Columns["Balance"].HeaderText = "Balance (₱)";
+                            if (dgvCustomers.Columns["CustomerID"] is DataGridViewColumn customerIdColumn) customerIdColumn.HeaderText = "ID";
+                            if (dgvCustomers.Columns["FullName"] is DataGridViewColumn customerNameColumn) customerNameColumn.HeaderText = "Full Name";
+                            if (dgvCustomers.Columns["ContactNumber"] is DataGridViewColumn customerContactColumn) customerContactColumn.HeaderText = "Contact No.";
+                            if (dgvCustomers.Columns["Balance"] is DataGridViewColumn customerBalanceColumn) customerBalanceColumn.HeaderText = "Balance (₱)";
                         }
 
                         lblTitle.Text = $"Customer List  ({dt.Rows.Count} record(s))";
@@ -176,28 +206,29 @@ namespace BillingSystem
         private void ConfigureDataGridView()
         {
             dgvCustomers.AutoGenerateColumns = false;
-            dgvCustomers.Columns["CustomerID"].DataPropertyName = "CustomerID";
-            dgvCustomers.Columns["FullName"].DataPropertyName = "FullName";
-            dgvCustomers.Columns["Address"].DataPropertyName = "Address";
-            dgvCustomers.Columns["ContactNumber"].DataPropertyName = "ContactNumber";
-            dgvCustomers.Columns["Email"].DataPropertyName = "Email";
-            dgvCustomers.Columns["Balance"].DataPropertyName = "Balance";
+            if (dgvCustomers.Columns["CustomerID"] is DataGridViewColumn customerIdBinding) customerIdBinding.DataPropertyName = "CustomerID";
+            if (dgvCustomers.Columns["FullName"] is DataGridViewColumn customerNameBinding) customerNameBinding.DataPropertyName = "FullName";
+            if (dgvCustomers.Columns["Address"] is DataGridViewColumn customerAddressBinding) customerAddressBinding.DataPropertyName = "Address";
+            if (dgvCustomers.Columns["ContactNumber"] is DataGridViewColumn customerContactBinding) customerContactBinding.DataPropertyName = "ContactNumber";
+            if (dgvCustomers.Columns["Email"] is DataGridViewColumn customerEmailBinding) customerEmailBinding.DataPropertyName = "Email";
+            if (dgvCustomers.Columns["Balance"] is DataGridViewColumn customerBalanceBinding) customerBalanceBinding.DataPropertyName = "Balance";
         }
 
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
         {
-            // If no row is selected (e.g., grid is empty), do nothing
-            if (dgvCustomers.CurrentRow == null) return;
+            _selectedCustomerId = 0;
 
-            // Read the CustomerID value from the selected row
-            var idCell = dgvCustomers.CurrentRow.Cells["CustomerID"].Value;
+            if (dgvCustomers.SelectedRows.Count == 0)
+                return;
 
-            if (idCell != null && int.TryParse(idCell.ToString(), out int id))
+            object? idCell = dgvCustomers.SelectedRows[0].Cells["CustomerID"].Value;
+
+            if (idCell != null &&
+                int.TryParse(Convert.ToString(idCell), out int id))
             {
                 _selectedCustomerId = id;
             }
         }
-
         private void dgvCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (!_canEdit) return;
@@ -618,3 +649,5 @@ namespace BillingSystem
 
     }
 }
+
+

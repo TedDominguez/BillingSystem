@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,9 +20,9 @@ namespace BillingSystem
         {
             InitializeComponent();
             dgvTop5.AutoGenerateColumns = false;
-            dgvTop5.Columns["FullName"].DataPropertyName = "FullName";
-            dgvTop5.Columns["TotalConsumption"].DataPropertyName = "TotalConsumption";
-            dgvTop5.Columns["TotalBilled"].DataPropertyName = "TotalBilled";
+            if (dgvTop5.Columns["FullName"] is DataGridViewColumn analyticsNameColumn) analyticsNameColumn.DataPropertyName = "FullName";
+            if (dgvTop5.Columns["TotalConsumption"] is DataGridViewColumn analyticsConsumptionColumn) analyticsConsumptionColumn.DataPropertyName = "TotalConsumption";
+            if (dgvTop5.Columns["TotalBilled"] is DataGridViewColumn analyticsBilledColumn) analyticsBilledColumn.DataPropertyName = "TotalBilled";
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -233,9 +233,9 @@ namespace BillingSystem
 
                         if (dgvTop5.Columns.Count > 0)
                         {
-                            dgvTop5.Columns["FullName"].HeaderText = "Customer Name";
-                            dgvTop5.Columns["TotalConsumption"].HeaderText = "Total Consumption (kWh)";
-                            dgvTop5.Columns["TotalBilled"].HeaderText = "Total Billed (₱)";
+                            if (dgvTop5.Columns["FullName"] is DataGridViewColumn analyticsNameHeader) analyticsNameHeader.HeaderText = "Customer Name";
+                            if (dgvTop5.Columns["TotalConsumption"] is DataGridViewColumn analyticsConsumptionHeader) analyticsConsumptionHeader.HeaderText = "Total Consumption (kWh)";
+                            if (dgvTop5.Columns["TotalBilled"] is DataGridViewColumn analyticsBilledHeader) analyticsBilledHeader.HeaderText = "Total Billed (₱)";
                         }
                     }
                 }

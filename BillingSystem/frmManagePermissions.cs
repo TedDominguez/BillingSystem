@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -10,7 +10,7 @@ namespace BillingSystem
     public partial class frmManagePermissions : Form
     {
         // Maps each PermissionName to its checkbox control
-        private Dictionary<string, CheckBox> _permCheckboxes;
+        private Dictionary<string, CheckBox> _permCheckboxes = new Dictionary<string, CheckBox>();
 
         public frmManagePermissions()
         {
@@ -38,8 +38,8 @@ namespace BillingSystem
 
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbRole.SelectedItem != null)
-                LoadPermissions(cmbRole.SelectedItem.ToString());
+            if (cmbRole.SelectedItem?.ToString() is string selectedRole && !string.IsNullOrWhiteSpace(selectedRole))
+                LoadPermissions(selectedRole);
         }
 
         private void LoadPermissions(string role)
@@ -81,7 +81,7 @@ namespace BillingSystem
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (cmbRole.SelectedItem == null) return;
-            string role = cmbRole.SelectedItem.ToString();
+            string role = cmbRole.SelectedItem?.ToString() ?? string.Empty;
 
             try
             {
