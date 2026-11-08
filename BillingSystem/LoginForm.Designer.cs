@@ -42,9 +42,9 @@
             lbltitle.AutoSize = true;
             lbltitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
             lbltitle.ImageAlign = ContentAlignment.BottomLeft;
-            lbltitle.Location = new Point(100, 9);
+            lbltitle.Location = new Point(114, 12);
             lbltitle.Name = "lbltitle";
-            lbltitle.Size = new Size(163, 25);
+            lbltitle.Size = new Size(203, 32);
             lbltitle.TabIndex = 0;
             lbltitle.Text = "BILLING SYSTEM";
             lbltitle.TextAlign = ContentAlignment.BottomLeft;
@@ -54,9 +54,9 @@
             lblUsername.AutoSize = true;
             lblUsername.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblUsername.ImageAlign = ContentAlignment.BottomLeft;
-            lblUsername.Location = new Point(58, 71);
+            lblUsername.Location = new Point(66, 95);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(95, 20);
+            lblUsername.Size = new Size(120, 25);
             lblUsername.TabIndex = 1;
             lblUsername.Text = "USERNAME:";
             lblUsername.TextAlign = ContentAlignment.BottomLeft;
@@ -66,9 +66,9 @@
             lblPassword.AutoSize = true;
             lblPassword.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblPassword.ImageAlign = ContentAlignment.BottomLeft;
-            lblPassword.Location = new Point(58, 96);
+            lblPassword.Location = new Point(66, 128);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(95, 20);
+            lblPassword.Size = new Size(122, 25);
             lblPassword.TabIndex = 2;
             lblPassword.Text = "PASSWORD:";
             lblPassword.TextAlign = ContentAlignment.BottomLeft;
@@ -76,43 +76,48 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(159, 70);
+            txtUsername.Location = new Point(182, 93);
+            txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(150, 23);
+            txtUsername.Size = new Size(171, 27);
             txtUsername.TabIndex = 3;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(159, 97);
+            txtPassword.Location = new Point(182, 129);
+            txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(150, 23);
+            txtPassword.Size = new Size(171, 27);
             txtPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(118, 198);
+            btnLogin.Location = new Point(135, 264);
+            btnLogin.Margin = new Padding(3, 4, 3, 4);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
+            btnLogin.Size = new Size(86, 31);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(199, 198);
+            btnCancel.Location = new Point(227, 264);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(86, 31);
             btnCancel.TabIndex = 6;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.EnablePreventFocusChange;
-            ClientSize = new Size(384, 261);
+            ClientSize = new Size(439, 348);
             Controls.Add(btnCancel);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
@@ -122,10 +127,11 @@
             Controls.Add(lbltitle);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Billing System – Login v1.0 (K.Y.M.L.)";
-            Load += Form1_Load;
+            Load += LoginForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
