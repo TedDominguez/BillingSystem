@@ -211,6 +211,23 @@ namespace BillingSystem
 
         private void AddCustomerForm_Load(object sender, EventArgs e)
         {
+            BackColor = AppTheme.BackgroundColor;
+            Font = new Font("Segoe UI", 9F);
+            lblTitle.ForeColor = AppTheme.PrimaryColor;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            foreach (var button in new[] { btnSave, btnClear, btnBack })
+            {
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.Height = 40;
+            }
+            btnSave.BackColor = AppTheme.SuccessColor;
+            btnSave.ForeColor = Color.White;
+            btnClear.BackColor = AppTheme.AccentColor;
+            btnClear.ForeColor = AppTheme.PrimaryDark;
+            btnBack.BackColor = AppTheme.PrimaryColor;
+            btnBack.ForeColor = Color.White;
+
             if (_editCustomerId > 0)
             {
                 // EDIT MODE — change the title and load existing data

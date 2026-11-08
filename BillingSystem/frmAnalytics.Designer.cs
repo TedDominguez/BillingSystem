@@ -53,7 +53,7 @@
             lblTotalUnpaid.Name = "lblTotalUnpaid";
             lblTotalUnpaid.Size = new Size(165, 25);
             lblTotalUnpaid.TabIndex = 0;
-            lblTotalUnpaid.Text = "Total Unpaid: ₱0.00";
+            lblTotalUnpaid.Text = "Total Unpaid: PHP 0.00";
             lblTotalUnpaid.Click += label1_Click;
             // 
             // lblTotalRevenue
@@ -63,7 +63,7 @@
             lblTotalRevenue.Name = "lblTotalRevenue";
             lblTotalRevenue.Size = new Size(174, 25);
             lblTotalRevenue.TabIndex = 1;
-            lblTotalRevenue.Text = "Total Revenue: ₱0.00";
+            lblTotalRevenue.Text = "Total Revenue: PHP 0.00";
             lblTotalRevenue.Click += label2_Click;
             // 
             // lblTotalCustomers

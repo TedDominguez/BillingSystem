@@ -37,15 +37,17 @@
             ContactNumber = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
             Balance = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btnDelete = new Button();
             btnLogout = new Button();
             btnSearch = new Button();
             txtSearch = new TextBox();
+            btnChangePassword = new Button();
+            btnViewBilling = new Button();
             btnAnalytics = new Button();
             btnExportExcel = new Button();
             btnExportPdf = new Button();
-            button1 = new Button();
             btnAuditLog = new Button();
             btnManagePermissions = new Button();
             statusStrip1 = new StatusStrip();
@@ -73,7 +75,7 @@
             dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCustomers.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { CustomerID, FullName, Address, ContactNumber, Email, Balance });
+            dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { CustomerID, FullName, Address, ContactNumber, Email, Balance, Status });
             dgvCustomers.Location = new Point(46, 137);
             dgvCustomers.Margin = new Padding(4, 5, 4, 5);
             dgvCustomers.Name = "dgvCustomers";
@@ -129,6 +131,13 @@
             Balance.Name = "Balance";
             Balance.ReadOnly = true;
             // 
+            // Status
+            // 
+            Status.HeaderText = "Status";
+            Status.MinimumWidth = 6;
+            Status.Name = "Status";
+            Status.ReadOnly = true;
+            // 
             // btnAdd
             // 
             btnAdd.Location = new Point(46, 524);
@@ -182,7 +191,24 @@
             txtSearch.TabIndex = 6;
             txtSearch.TextChanged += textBox1_TextChanged;
             // 
-            // btnAnalytics
+            // btnChangePassword
+            btnChangePassword.Location = new Point(760, 573);
+            btnChangePassword.Name = "btnChangePassword";
+            btnChangePassword.Size = new Size(187, 43);
+            btnChangePassword.TabIndex = 14;
+            btnChangePassword.Text = "Change Password";
+            btnChangePassword.UseVisualStyleBackColor = true;
+            btnChangePassword.Click += btnChangePassword_Click;
+            //
+            // btnViewBilling
+            btnViewBilling.Location = new Point(760, 622);
+            btnViewBilling.Name = "btnViewBilling";
+            btnViewBilling.Size = new Size(187, 43);
+            btnViewBilling.TabIndex = 15;
+            btnViewBilling.Text = "View Billing Records";
+            btnViewBilling.UseVisualStyleBackColor = true;
+            btnViewBilling.Click += btnViewBilling_Click;
+            //            // btnAnalytics
             // 
             btnAnalytics.Location = new Point(298, 524);
             btnAnalytics.Name = "btnAnalytics";
@@ -212,14 +238,6 @@
             btnExportPdf.UseVisualStyleBackColor = true;
             btnExportPdf.Click += btnExportPdf_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(0, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 10;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
             // 
             // btnAuditLog
             // 
@@ -281,9 +299,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1120, 768);
             Controls.Add(statusStrip1);
+            Controls.Add(btnViewBilling);
+            Controls.Add(btnChangePassword);
             Controls.Add(btnManagePermissions);
             Controls.Add(btnAuditLog);
-            Controls.Add(button1);
             Controls.Add(btnExportPdf);
             Controls.Add(btnExportExcel);
             Controls.Add(btnAnalytics);
@@ -316,15 +335,17 @@
         private DataGridViewTextBoxColumn ContactNumber;
         private DataGridViewTextBoxColumn Email;
         private DataGridViewTextBoxColumn Balance;
+        private DataGridViewTextBoxColumn Status;
         private Button btnAdd;
         private Button btnDelete;
         private Button btnLogout;
         private Button btnSearch;
         private TextBox txtSearch;
+        private Button btnChangePassword;
+        private Button btnViewBilling;
         private Button btnAnalytics;
         private Button btnExportExcel;
         private Button btnExportPdf;
-        private Button button1;
         private Button btnAuditLog;
         private Button btnManagePermissions;
         private StatusStrip statusStrip1;
@@ -334,3 +355,4 @@
         private System.Windows.Forms.Timer statusTimer;
     }
 }
+

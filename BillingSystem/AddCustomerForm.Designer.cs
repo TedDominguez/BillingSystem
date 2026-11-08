@@ -112,7 +112,7 @@
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(273, 31);
             txtFullName.TabIndex = 1;
-            txtFullName.Text = "  ";
+            txtFullName.Text = "";
             // 
             // txtAddress
             // 
@@ -121,7 +121,7 @@
             txtAddress.Name = "txtAddress";
             txtAddress.Size = new Size(273, 31);
             txtAddress.TabIndex = 1;
-            txtAddress.Text = "  ";
+            txtAddress.Text = "";
             // 
             // txtContact
             // 
@@ -130,7 +130,7 @@
             txtContact.Name = "txtContact";
             txtContact.Size = new Size(273, 31);
             txtContact.TabIndex = 1;
-            txtContact.Text = "  ";
+            txtContact.Text = "";
             // 
             // txtEmail
             // 
@@ -139,7 +139,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(273, 31);
             txtEmail.TabIndex = 1;
-            txtEmail.Text = "  ";
+            txtEmail.Text = "";
             // 
             // txtBalance
             // 
@@ -148,7 +148,7 @@
             txtBalance.Name = "txtBalance";
             txtBalance.Size = new Size(273, 31);
             txtBalance.TabIndex = 1;
-            txtBalance.Text = "  0.00";
+            txtBalance.Text = "0.00";
             // 
             // btnSave
             // 
