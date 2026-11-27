@@ -26,7 +26,111 @@ namespace BillingSystem
         public CustomerListForm()
         {
             InitializeComponent();
+            ConfigureMainLayout();
             ConfigureDataGridView();
+        }
+
+
+        private void ConfigureMainLayout()
+        {
+            SuspendLayout();
+            Controls.Clear();
+
+            Text = "Billing System | Customer Management";
+            BackColor = AppTheme.BackgroundColor;
+            Font = new Font("Segoe UI", 9F);
+            MinimumSize = new Size(1100, 700);
+            WindowState = FormWindowState.Maximized;
+
+            var root = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = AppTheme.BackgroundColor,
+                Padding = new Padding(22),
+                ColumnCount = 1,
+                RowCount = 5
+            };
+            root.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            root.RowStyles.Add(new RowStyle(SizeType.Absolute, 60));
+            root.RowStyles.Add(new RowStyle(SizeType.Absolute, 58));
+            root.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
+            root.RowStyles.Add(new RowStyle(SizeType.Absolute, 112));
+            root.RowStyles.Add(new RowStyle(SizeType.Absolute, 30));
+
+            var header = new Panel { Dock = DockStyle.Fill, BackColor = AppTheme.PrimaryColor, Padding = new Padding(18, 8, 18, 8) };
+            lblTitle.AutoSize = false;
+            lblTitle.Dock = DockStyle.Fill;
+            lblTitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.White;
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
+            lblTitle.Text = "Customer Management";
+            header.Controls.Add(lblTitle);
+            root.Controls.Add(header, 0, 0);
+
+            var searchPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = false,
+                Padding = new Padding(0, 10, 0, 8),
+                BackColor = AppTheme.BackgroundColor
+            };
+            var searchLabel = new Label
+            {
+                Text = "Search customers",
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
+                ForeColor = AppTheme.TextColor,
+                Margin = new Padding(0, 9, 12, 0)
+            };
+            txtSearch.Width = 390;
+            txtSearch.Height = 34;
+            txtSearch.Margin = new Padding(0, 2, 10, 0);
+            btnSearch.Size = new Size(112, 36);
+            btnSearch.Margin = new Padding(0, 1, 0, 0);
+            searchPanel.Controls.Add(searchLabel);
+            searchPanel.Controls.Add(txtSearch);
+            searchPanel.Controls.Add(btnSearch);
+            root.Controls.Add(searchPanel, 0, 1);
+
+            dgvCustomers.Dock = DockStyle.Fill;
+            dgvCustomers.Margin = new Padding(0, 4, 0, 12);
+            dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCustomers.AllowUserToAddRows = false;
+            dgvCustomers.AllowUserToDeleteRows = false;
+            root.Controls.Add(dgvCustomers, 0, 2);
+
+            var actions = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.LeftToRight,
+                WrapContents = true,
+                AutoScroll = true,
+                Padding = new Padding(0, 6, 0, 4),
+                BackColor = AppTheme.BackgroundColor
+            };
+            Button[] actionButtons =
+            {
+                btnAdd, btnDelete, btnAnalytics, btnExportExcel, btnExportPdf,
+                btnAuditLog, btnManagePermissions, btnChangePassword, btnViewBilling, btnLogout
+            };
+            foreach (var button in actionButtons)
+            {
+                button.Size = new Size(178, 38);
+                button.Margin = new Padding(0, 0, 10, 8);
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                actions.Controls.Add(button);
+            }
+            root.Controls.Add(actions, 0, 3);
+
+            statusStrip1.Dock = DockStyle.Fill;
+            statusStrip1.SizingGrip = false;
+            lblStatusSep.Spring = true;
+            root.Controls.Add(statusStrip1, 0, 4);
+
+            Controls.Add(root);
+            ResumeLayout(true);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -70,9 +174,13 @@ namespace BillingSystem
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddCustomerForm addCustomerForm = new AddCustomerForm();
-            addCustomerForm.ShowDialog();
-            // LoadCustomers();   // enable this line in Step 4.4
+            using (AddCustomerForm addCustomerForm = new AddCustomerForm())
+            {
+                addCustomerForm.ShowDialog(this);
+            }
+
+            // Refresh the list after the add form closes so newly saved records appear.
+            LoadCustomers();
         }
 
         private void LoadCustomers()
@@ -108,7 +216,8 @@ namespace BillingSystem
                             if (dgvCustomers.Columns["CustomerID"] is DataGridViewColumn customerIdColumn) customerIdColumn.HeaderText = "ID";
                             if (dgvCustomers.Columns["FullName"] is DataGridViewColumn customerNameColumn) customerNameColumn.HeaderText = "Full Name";
                             if (dgvCustomers.Columns["ContactNumber"] is DataGridViewColumn customerContactColumn) customerContactColumn.HeaderText = "Contact No.";
-                            if (dgvCustomers.Columns["Balance"] is DataGridViewColumn customerBalanceColumn) customerBalanceColumn.HeaderText = "Balance (₱)";
+                            if (dgvCustomers.Columns["Balance"] is DataGridViewColumn customerBalanceColumn) customerBalanceColumn.HeaderText = "Balance (PHP)";
+                            if (dgvCustomers.Columns["Status"] is DataGridViewColumn customerStatusColumn) customerStatusColumn.HeaderText = "Account Status";
                         }
 
                         lblTitle.Text = $"Customer List  ({dt.Rows.Count} record(s))";
@@ -206,12 +315,18 @@ namespace BillingSystem
         private void ConfigureDataGridView()
         {
             dgvCustomers.AutoGenerateColumns = false;
+            dgvCustomers.EnableHeadersVisualStyles = false;
+            dgvCustomers.ColumnHeadersHeight = 42;
+            dgvCustomers.RowTemplate.Height = 34;
+            if (dgvCustomers.Columns["Balance"] is DataGridViewColumn balanceFormatColumn)
+                balanceFormatColumn.DefaultCellStyle.Format = "\"PHP \"#,##0.00";
             if (dgvCustomers.Columns["CustomerID"] is DataGridViewColumn customerIdBinding) customerIdBinding.DataPropertyName = "CustomerID";
             if (dgvCustomers.Columns["FullName"] is DataGridViewColumn customerNameBinding) customerNameBinding.DataPropertyName = "FullName";
             if (dgvCustomers.Columns["Address"] is DataGridViewColumn customerAddressBinding) customerAddressBinding.DataPropertyName = "Address";
             if (dgvCustomers.Columns["ContactNumber"] is DataGridViewColumn customerContactBinding) customerContactBinding.DataPropertyName = "ContactNumber";
             if (dgvCustomers.Columns["Email"] is DataGridViewColumn customerEmailBinding) customerEmailBinding.DataPropertyName = "Email";
             if (dgvCustomers.Columns["Balance"] is DataGridViewColumn customerBalanceBinding) customerBalanceBinding.DataPropertyName = "Balance";
+            if (dgvCustomers.Columns["Status"] is DataGridViewColumn customerStatusBinding) customerStatusBinding.DataPropertyName = "Status";
         }
 
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
@@ -594,22 +709,37 @@ namespace BillingSystem
         {
             // Form background
             this.BackColor = AppTheme.BackgroundColor;
+            this.Font = new Font("Segoe UI", 9F);
+            lblTitle.ForeColor = AppTheme.PrimaryColor;
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            dgvCustomers.BackgroundColor = AppTheme.SurfaceColor;
+            dgvCustomers.BorderStyle = BorderStyle.FixedSingle;
+            dgvCustomers.GridColor = AppTheme.BorderColor;
+            dgvCustomers.RowHeadersVisible = false;
+            dgvCustomers.EnableHeadersVisualStyles = false;
+            dgvCustomers.ColumnHeadersHeight = 42;
+            dgvCustomers.RowTemplate.Height = 34;
+            dgvCustomers.ColumnHeadersDefaultCellStyle.SelectionBackColor = AppTheme.PrimaryColor;
+            dgvCustomers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(246, 232, 205);
+            dgvCustomers.DefaultCellStyle.SelectionForeColor = AppTheme.TextColor;
+            dgvCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 9F);
 
-            // Action buttons
+            // Consistent action-button treatment
+            foreach (var button in new[] { btnAdd, btnDelete, btnLogout, btnSearch,
+                         btnChangePassword, btnViewBilling, btnAnalytics, btnExportExcel,
+                         btnExportPdf, btnAuditLog, btnManagePermissions })
+            {
+                button.FlatStyle = FlatStyle.Flat;
+                button.FlatAppearance.BorderSize = 0;
+                button.ForeColor = Color.White;
+                button.BackColor = AppTheme.PrimaryColor;
+            }
             btnAdd.BackColor = AppTheme.SuccessColor;
-            btnAdd.ForeColor = Color.White;
             btnDelete.BackColor = AppTheme.DangerColor;
-            btnDelete.ForeColor = Color.White;
-            btnAnalytics.BackColor = AppTheme.PrimaryColor;
-            btnAnalytics.ForeColor = Color.White;
-            btnExportExcel.BackColor = AppTheme.SecondaryColor;
-            btnExportExcel.ForeColor = Color.White;
-            btnExportPdf.BackColor = AppTheme.SecondaryColor;
-            btnExportPdf.ForeColor = Color.White;
-            btnAuditLog.BackColor = AppTheme.SecondaryColor;
-            btnAuditLog.ForeColor = Color.White;
-            btnManagePermissions.BackColor = AppTheme.DangerColor;
-            btnManagePermissions.ForeColor = Color.White;
+            btnManagePermissions.BackColor = AppTheme.SecondaryColor;
+            btnLogout.BackColor = AppTheme.PrimaryDark;
+            btnSearch.BackColor = AppTheme.AccentColor;
+            btnSearch.ForeColor = AppTheme.PrimaryDark;
 
             // DataGridView header colors
             dgvCustomers.ColumnHeadersDefaultCellStyle.BackColor = AppTheme.PrimaryColor;
@@ -649,5 +779,8 @@ namespace BillingSystem
 
     }
 }
+
+
+
 
 

@@ -5,13 +5,13 @@ namespace BillingSystem.Database
 {
     public class DatabaseConnection
     {
-        private const string SERVER = "127.0.0.1";
+        private static string SERVER => Environment.GetEnvironmentVariable("BILLINGSYSTEM_DB_HOST") ?? "127.0.0.1";
         private const uint PORT = 3306;
         private const string DATABASE = "BillingDB";
-        private const string UID = "billing_app";
+        private static string UID => Environment.GetEnvironmentVariable("BILLINGSYSTEM_DB_USER") ?? "billing_app";
 
-        // Retains the password currently configured in your project.
-        // If it is not the MySQL root password, update this constant.
+        // Credentials are supplied through the BILLINGSYSTEM_DB_PASSWORD
+        // environment variable and are never stored in source control.
         private static string PASSWORD =>
             Environment.GetEnvironmentVariable("BILLINGSYSTEM_DB_PASSWORD") ?? "";
 

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -29,6 +29,7 @@ namespace BillingSystem
             Font = new Font("Segoe UI", 9F);
 
             BuildLayout();
+            AppTheme.Apply(this);
             LoadBillingHistory();
         }
 

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System.Drawing;
+using MySql.Data.MySqlClient;
 using BillingSystem.Database;
 using BillingSystem.Utils;
 
@@ -13,6 +14,20 @@ namespace BillingSystem
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            BackColor = AppTheme.BackgroundColor;
+            Font = new Font("Segoe UI", 9F);
+            lbltitle.ForeColor = AppTheme.PrimaryColor;
+            lbltitle.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
+            btnLogin.FlatStyle = FlatStyle.Flat;
+            btnLogin.FlatAppearance.BorderSize = 0;
+            btnLogin.BackColor = AppTheme.PrimaryColor;
+            btnLogin.ForeColor = Color.White;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.FlatAppearance.BorderColor = AppTheme.BorderColor;
+            btnCancel.BackColor = Color.White;
+            btnCancel.ForeColor = AppTheme.TextColor;
+            btnCancel.Click += (_, _) => Close();
+
             // Test the database connection when the form opens.
             // This gives a clear warning if MySQL is not running.
             if (!DatabaseConnection.TestConnection())
