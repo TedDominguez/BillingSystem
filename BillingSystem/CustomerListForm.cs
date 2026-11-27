@@ -1,4 +1,4 @@
-﻿using BillingSystem.Database;
+using BillingSystem.Database;
 using BillingSystem.Utils;
 using ClosedXML.Excel;
 using MySql.Data.MySqlClient;
